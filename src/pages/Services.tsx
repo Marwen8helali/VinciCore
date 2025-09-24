@@ -1,97 +1,52 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Code, Smartphone, Monitor, Cloud, Shield, Headphones, Zap, CheckCircle, ArrowRight } from 'lucide-react';
 
 const Services = () => {
+  const { t } = useTranslation();
+
   const services = [
     {
       icon: Code,
-      title: 'Développement logiciel sur mesure',
-      description: 'Solutions web, mobile et desktop adaptées à vos besoins spécifiques',
-      features: [
-        'Applications web modernes (React, Node.js, Python)',
-        'Applications mobiles (iOS, Android, React Native)',
-        'Logiciels desktop multiplateformes',
-        'APIs et microservices',
-        'Intégrations système'
-      ],
+      title: t('services.items.development.title'),
+      description: t('services.items.development.description'),
+      features: t('services.items.development.features', { returnObjects: true }),
       color: 'from-blue-500 to-blue-600'
     },
     {
       icon: Zap,
-      title: 'Conseil en informatique & transformation digitale',
-      description: 'Accompagnement stratégique pour optimiser vos processus',
-      features: [
-        'Audit informatique complet',
-        'Stratégie de transformation digitale',
-        'Optimisation des processus métier',
-        'Architecture système et technique',
-        'Conduite du changement'
-      ],
+      title: t('services.items.consulting.title'),
+      description: t('services.items.consulting.description'),
+      features: t('services.items.consulting.features', { returnObjects: true }),
       color: 'from-purple-500 to-purple-600'
     },
     {
       icon: Cloud,
-      title: 'Cloud & Infrastructure',
-      description: 'Migration et optimisation de vos infrastructures cloud',
-      features: [
-        'Migration vers le cloud (AWS, Azure, GCP)',
-        'Architecture cloud native',
-        'DevOps et CI/CD',
-        'Monitoring et observabilité',
-        'Optimisation des coûts'
-      ],
+      title: t('services.items.cloud.title'),
+      description: t('services.items.cloud.description'),
+      features: t('services.items.cloud.features', { returnObjects: true }),
       color: 'from-cyan-500 to-cyan-600'
     },
     {
       icon: Shield,
-      title: 'Cybersécurité',
-      description: 'Protection complète de vos données et systèmes informatiques',
-      features: [
-        'Audit de sécurité et tests d\'intrusion',
-        'Mise en place de politiques de sécurité',
-        'Formation des équipes',
-        'Gestion des incidents de sécurité',
-        'Conformité RGPD et normes ISO'
-      ],
+      title: t('services.items.security.title'),
+      description: t('services.items.security.description'),
+      features: t('services.items.security.features', { returnObjects: true }),
       color: 'from-red-500 to-red-600'
     },
     {
       icon: Headphones,
-      title: 'Support & Maintenance',
-      description: 'Support technique réactif et maintenance préventive',
-      features: [
-        'Support technique 24/7',
-        'Maintenance préventive et corrective',
-        'Monitoring proactif',
-        'Mise à jour et évolutions',
-        'Formation des utilisateurs'
-      ],
+      title: t('services.items.support.title'),
+      description: t('services.items.support.description'),
+      features: t('services.items.support.features', { returnObjects: true }),
       color: 'from-green-500 to-green-600'
     }
   ];
 
-  const process = [
-    {
-      step: '01',
-      title: 'Analyse des besoins',
-      description: 'Nous analysons vos besoins et définissons ensemble les objectifs de votre projet.'
-    },
-    {
-      step: '02',
-      title: 'Conception & Planning',
-      description: 'Conception détaillée de la solution et planification des étapes de développement.'
-    },
-    {
-      step: '03',
-      title: 'Développement',
-      description: 'Développement agile avec des points de contrôle réguliers et votre feedback continu.'
-    },
-    {
-      step: '04',
-      title: 'Déploiement & Support',
-      description: 'Mise en production sécurisée et support continu pour assurer le succès de votre projet.'
-    }
-  ];
+  const process = t('services.process.steps', { returnObjects: true }).map((step, index) => ({
+    step: String(index + 1).padStart(2, '0'),
+    ...step
+  }));
 
   return (
     <div>
@@ -99,11 +54,10 @@ const Services = () => {
       <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Nos Services
+            {t('services.hero.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Des solutions complètes pour accompagner votre transformation digitale 
-            et propulser votre entreprise vers le succès.
+            {t('services.hero.subtitle')}
           </p>
         </div>
       </section>
@@ -113,11 +67,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Notre Expertise à Votre Service
+              {t('services.main.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Découvrez nos domaines d'expertise et comment nous pouvons vous accompagner 
-              dans la réalisation de vos projets les plus ambitieux.
+              {t('services.main.subtitle')}
             </p>
           </div>
 
@@ -153,10 +106,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Notre Processus de Travail
+              {t('services.process.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Une approche structurée et agile pour garantir le succès de vos projets
+              {t('services.process.subtitle')}
             </p>
           </div>
 
@@ -186,10 +139,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Technologies Maîtrisées
+              {t('services.technologies.title')}
             </h2>
             <p className="text-xl text-gray-600">
-              Nous utilisons les technologies les plus modernes et éprouvées
+              {t('services.technologies.subtitle')}
             </p>
           </div>
 
@@ -213,17 +166,16 @@ const Services = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Discutons de Votre Projet
+            {t('services.cta.title')}
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Vous avez un projet en tête ? Contactez-nous pour un devis personnalisé 
-            et découvrez comment nous pouvons vous aider à le concrétiser.
+            {t('services.cta.subtitle')}
           </p>
           <a
             href="/contact"
             className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-flex items-center group"
           >
-            Demander un devis
+            {t('services.cta.button')}
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

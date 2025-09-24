@@ -1,36 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Shield, Cloud, Code, Users, Zap, CheckCircle } from 'lucide-react';
 
 const Home = () => {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: Code,
-      title: 'Développement Sur Mesure',
-      description: 'Solutions logicielles adaptées à vos besoins spécifiques'
+      title: t('home.features.development.title'),
+      description: t('home.features.development.description')
     },
     {
       icon: Cloud,
-      title: 'Cloud & Infrastructure',
-      description: 'Migration et optimisation de vos infrastructures'
+      title: t('home.features.cloud.title'),
+      description: t('home.features.cloud.description')
     },
     {
       icon: Shield,
-      title: 'Cybersécurité',
-      description: 'Protection complète de vos données et systèmes'
+      title: t('home.features.security.title'),
+      description: t('home.features.security.description')
     },
     {
       icon: Users,
-      title: 'Conseil Expert',
-      description: 'Accompagnement dans votre transformation digitale'
+      title: t('home.features.consulting.title'),
+      description: t('home.features.consulting.description')
     }
   ];
 
   const stats = [
-    { number: '50+', label: 'Projets réalisés' },
-    { number: '100%', label: 'Clients satisfaits' },
-    { number: '24/7', label: 'Support disponible' },
-    { number: '5+', label: 'Années d\'expérience' }
+    { number: '50+', label: t('home.stats.projects') },
+    { number: '100%', label: t('home.stats.satisfaction') },
+    { number: '24/7', label: t('home.stats.support') },
+    { number: '5+', label: t('home.stats.experience') }
   ];
 
   return (
@@ -43,28 +46,27 @@ const Home = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Au cœur de vos
+              {t('home.hero.title')}
               <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                solutions numériques
+                {t('home.hero.titleHighlight')}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              VinciCore vous accompagne dans votre transformation digitale avec des solutions 
-              innovantes et personnalisées pour propulser votre entreprise vers le futur.
+              {t('home.hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/services"
                 className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center group"
               >
-                Découvrez nos services
+                {t('home.hero.ctaPrimary')}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition-all duration-300"
               >
-                Nous contacter
+                {t('home.hero.ctaSecondary')}
               </Link>
             </div>
           </div>
@@ -92,10 +94,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nos Expertises
+              {t('home.features.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Des solutions complètes pour accompagner votre croissance et votre transformation digitale
+              {t('home.features.subtitle')}
             </p>
           </div>
 
@@ -126,21 +128,14 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Pourquoi choisir VinciCore ?
+                {t('home.whyChoose.title')}
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Notre approche centrée sur l'innovation et la qualité nous permet de 
-                délivrer des solutions qui dépassent vos attentes.
+                {t('home.whyChoose.subtitle')}
               </p>
               
               <div className="space-y-4">
-                {[
-                  'Expertise technique reconnue',
-                  'Solutions sur mesure et évolutives',
-                  'Accompagnement personnalisé',
-                  'Support réactif et disponible',
-                  'Approche agile et collaborative'
-                ].map((item, index) => (
+                {t('home.whyChoose.items', { returnObjects: true }).map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500" />
                     <span className="text-gray-700">{item}</span>
@@ -152,10 +147,9 @@ const Home = () => {
             <div className="relative">
               <div className="bg-gradient-to-br from-blue-500 to-cyan-400 p-8 rounded-2xl text-white">
                 <Zap className="h-12 w-12 mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Innovation & Performance</h3>
+                <h3 className="text-2xl font-bold mb-4">{t('home.whyChoose.innovation.title')}</h3>
                 <p className="text-blue-100">
-                  Nous combinons les dernières technologies avec une approche pragmatique 
-                  pour créer des solutions qui propulsent votre business vers le succès.
+                  {t('home.whyChoose.innovation.description')}
                 </p>
               </div>
             </div>
@@ -167,17 +161,16 @@ const Home = () => {
       <section className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Prêt à transformer votre entreprise ?
+            {t('home.cta.title')}
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Discutons de vos projets et découvrons ensemble comment VinciCore 
-            peut vous accompagner dans votre réussite.
+            {t('home.cta.subtitle')}
           </p>
           <Link
             to="/contact"
             className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-flex items-center group"
           >
-            Commencer maintenant
+            {t('home.cta.button')}
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

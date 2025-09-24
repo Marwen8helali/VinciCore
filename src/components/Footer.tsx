@@ -1,7 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Code2, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -15,37 +18,39 @@ const Footer = () => {
               <span className="text-2xl font-bold">VinciCore</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Au cœur de vos solutions numériques. Nous accompagnons les entreprises 
-              dans leur transformation digitale avec expertise et innovation.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.contact')}</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-cyan-400" />
-                <span className="text-gray-300">contact@vincicore.com</span>
+                <span className="text-gray-300">{t('contact.info.email.content')}</span>
               </div>
             </div>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.services')}</h3>
             <ul className="space-y-2">
-              <li><span className="text-gray-300 hover:text-cyan-400 transition-colors cursor-pointer">Développement logiciel</span></li>
-              <li><span className="text-gray-300 hover:text-cyan-400 transition-colors cursor-pointer">Conseil informatique</span></li>
-              <li><span className="text-gray-300 hover:text-cyan-400 transition-colors cursor-pointer">Cloud & Infrastructure</span></li>
-              <li><span className="text-gray-300 hover:text-cyan-400 transition-colors cursor-pointer">Cybersécurité</span></li>
+              {t('footer.servicesList', { returnObjects: true }).map((service, index) => (
+                <li key={index}>
+                  <span className="text-gray-300 hover:text-cyan-400 transition-colors cursor-pointer">
+                    {service}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-slate-800 mt-12 pt-8">
           <p className="text-center text-gray-400">
-            © {new Date().getFullYear()} VinciCore. Tous droits réservés.
+            © {new Date().getFullYear()} VinciCore. {t('footer.copyright')}
           </p>
         </div>
       </div>

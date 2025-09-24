@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Mail, MessageSquare, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,9 +50,9 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      content: 'contact@vincicore.com',
-      description: 'Nous répondons sous 24h'
+      title: t('contact.info.email.title'),
+      content: t('contact.info.email.content'),
+      description: t('contact.info.email.description')
     }
   ];
 
@@ -59,11 +62,10 @@ const Contact = () => {
       <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Contactez-Nous
+            {t('contact.hero.title')}
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Vous avez un projet en tête ? Une question sur nos services ? 
-            Notre équipe est là pour vous accompagner et répondre à tous vos besoins.
+            {t('contact.hero.subtitle')}
           </p>
         </div>
       </section>
@@ -77,18 +79,17 @@ const Contact = () => {
             <div className="bg-white p-8 rounded-2xl shadow-sm">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Envoyez-nous un message
+                  {t('contact.form.title')}
                 </h2>
                 <p className="text-gray-600">
-                  Remplissez le formulaire ci-dessous et nous vous recontacterons 
-                  dans les plus brefs délais.
+                  {t('contact.form.subtitle')}
                 </p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Nom complet *
+                    {t('contact.form.name')} *
                   </label>
                   <input
                     type="text"
@@ -98,13 +99,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="Votre nom"
+                    placeholder={t('contact.form.namePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
+                    {t('contact.form.email')} *
                   </label>
                   <input
                     type="email"
@@ -114,13 +115,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="votre@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    {t('contact.form.message')} *
                   </label>
                   <textarea
                     id="message"
@@ -130,7 +131,7 @@ const Contact = () => {
                     required
                     rows={6}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
-                    placeholder="Décrivez votre projet ou votre question..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   ></textarea>
                 </div>
 
@@ -139,7 +140,7 @@ const Contact = () => {
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600" />
                     <span className="text-green-700">
-                      Message envoyé avec succès ! Nous vous répondrons bientôt.
+                      {t('contact.form.success')}
                     </span>
                   </div>
                 )}
@@ -148,7 +149,7 @@ const Contact = () => {
                   <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center space-x-3">
                     <AlertCircle className="h-5 w-5 text-red-600" />
                     <span className="text-red-700">
-                      {errorMessage}
+                      {t('contact.form.error')}
                     </span>
                   </div>
                 )}
@@ -159,11 +160,14 @@ const Contact = () => {
                   className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-3 px-6 rounded-lg font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {status === 'loading' ? (
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span>{t('contact.form.sending')}</span>
+                    </>
                   ) : (
                     <>
                       <Send className="h-5 w-5" />
-                      <span>Envoyer le message</span>
+                      <span>{t('contact.form.send')}</span>
                     </>
                   )}
                 </button>
@@ -174,11 +178,10 @@ const Contact = () => {
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  Informations de Contact
+                  {t('contact.info.title')}
                 </h2>
                 <p className="text-gray-600 text-lg mb-8">
-                  Nous sommes disponibles pour répondre à toutes vos questions 
-                  et discuter de vos projets. N'hésitez pas à nous contacter !
+                  {t('contact.info.subtitle')}
                 </p>
               </div>
 
@@ -212,16 +215,14 @@ const Contact = () => {
               {/* Additional Info */}
               <div className="bg-gradient-to-r from-blue-500 to-cyan-400 p-8 rounded-2xl text-white">
                 <MessageSquare className="h-12 w-12 mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Parlons de votre projet</h3>
+                <h3 className="text-2xl font-bold mb-4">{t('contact.project.title')}</h3>
                 <p className="text-blue-100 mb-6">
-                  Chaque projet est unique. Contactez-nous pour une consultation 
-                  personnalisée et découvrons ensemble comment VinciCore peut 
-                  vous accompagner dans votre réussite.
+                  {t('contact.project.description')}
                 </p>
                 <ul className="space-y-2 text-blue-100">
-                  <li>✓ Consultation gratuite</li>
-                  <li>✓ Devis personnalisé</li>
-                  <li>✓ Réponse sous 24h</li>
+                  {t('contact.project.features', { returnObjects: true }).map((feature, index) => (
+                    <li key={index}>✓ {feature}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -234,32 +235,15 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Questions Fréquentes
+              {t('contact.faq.title')}
             </h2>
             <p className="text-xl text-gray-600">
-              Retrouvez les réponses aux questions les plus courantes
+              {t('contact.faq.subtitle')}
             </p>
           </div>
 
           <div className="space-y-6">
-            {[
-              {
-                question: "Quel est le délai moyen pour un projet ?",
-                answer: "Le délai varie selon la complexité du projet. Pour un site web simple, comptez 2-4 semaines. Pour une application complexe, cela peut prendre 3-6 mois. Nous établissons un planning détaillé dès le début."
-              },
-              {
-                question: "Proposez-vous un support après livraison ?",
-                answer: "Oui, nous offrons différents niveaux de support et maintenance. Nous restons disponibles pour les mises à jour, corrections et évolutions de votre solution."
-              },
-              {
-                question: "Comment se déroule un projet type ?",
-                answer: "Analyse des besoins → Conception & Planning → Développement itératif → Tests & Validation → Déploiement → Support. Vous êtes impliqué à chaque étape avec des points de contrôle réguliers."
-              },
-              {
-                question: "Travaillez-vous avec des petites entreprises ?",
-                answer: "Absolument ! Nous accompagnons les entreprises de toutes tailles, des startups aux grandes entreprises. Nos solutions s'adaptent à votre budget et vos besoins."
-              }
-            ].map((faq, index) => (
+            {t('contact.faq.items', { returnObjects: true }).map((faq, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-xl">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3">
                   {faq.question}
