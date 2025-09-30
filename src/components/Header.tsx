@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
-import { Menu, X, Monitor } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import LanguageSelector from './LanguageSelector';
+import LogoImage from '../img/Design_sans_titre_3_-removebg-preview.png';
 
 const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const { theme } = useTheme();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 200); // active après 50px de scroll
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navigation = [
     { name: t('nav.home'), href: '/' },
@@ -22,12 +33,20 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-lg transition-colors duration-300">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 shadow-lg ${
+        isScrolled ? 'bg-[#0c2c4f]' : 'bg-white dark:bg-gray-900'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Monitor className="h-8 w-8 text-blue-500" />
+            <img 
+              src={LogoImage} 
+              alt="Logo VinciCore"
+              style={{ margin: '-30px' , height: '100px', width: '100px' }}
+            />
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
               VinciCore
             </span>
@@ -41,8 +60,8 @@ const Header = () => {
                 to={item.href}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                   isActive(item.href)
-                    ? 'text-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
+                    ? 'text-blue-400'
+                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-400'
                 }`}
               >
                 {item.name}
@@ -62,7 +81,7 @@ const Header = () => {
             <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 p-2"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-400 p-2"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -80,9 +99,11 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
                     isActive(item.href)
-                      ? 'text-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400'
-                  }`}
+                      ? 'text-blue-400'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-400'
+                      
+                  }`
+                }
                 >
                   {item.name}
                 </Link>

@@ -1,0 +1,120 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "languages": {
+    "english": "Anglais",
+    "french": "Français",
+    "arabic": "Arabe"
+  },
+  "header": {
+    "vinciCore": "VinciCore"
+  },
+  "footer": {
+    "vinciCore": "VinciCore",
+    "rightsReserved": "Tous droits réservés.",
+    "description": "VinciCore est une entreprise technologique qui fournit des solutions innovantes pour votre entreprise.",
+    "contact": "Contact",
+    "services": "Services",
+    "service1": "Développement Web",
+    "service2": "Développement Mobile",
+    "service3": "Solutions Cloud",
+    "service4": "Cybersécurité"
+  },
+  "about": {
+    "heroTitle": "À Propos de VinciCore",
+    "heroDescription": "Découvrez l'histoire, les valeurs et la vision qui animent VinciCore dans sa mission d'accompagner votre transformation digitale."
+  },
+  "companyStory": {
+    "title": "Notre Histoire",
+    "description1": "VinciCore est née de la passion pour la technologie et du désir de créer des solutions numériques qui transforment véritablement les entreprises.",
+    "description2": "Fondée avec la conviction que chaque organisation mérite des outils technologiques à la hauteur de ses ambitions.",
+    "description3": "Depuis nos débuts, nous nous sommes spécialisés dans l'accompagnement des entreprises de toutes tailles dans leur transformation digitale, en combinant expertise technique de pointe et approche humaine centrée sur vos besoins réels.",
+    "missionTitle": "Notre Mission",
+    "missionDescription": "Démocratiser l'accès aux technologies de pointe en rendant les solutions numériques avancées accessibles à toutes les entreprises, quelle que soit leur taille."
+  },
+  "values": {
+    "title": "Nos Valeurs",
+    "description": "Les principes fondamentaux qui guident notre action et définissent notre approche unique du service client.",
+    "innovationTitle": "Innovation",
+    "innovationDescription": "Nous restons à la pointe de la technologie pour vous offrir des solutions innovantes et performantes.",
+    "reliabilityTitle": "Fiabilité",
+    "reliabilityDescription": "Notre engagement envers la qualité et la fiabilité fait de nous un partenaire de confiance durable.",
+    "proximityTitle": "Proximité Client",
+    "proximityDescription": "Nous privilégions une relation de proximité et un accompagnement personnalisé pour chaque client."
+  },
+  "stats": {
+    "title": "VinciCore en Chiffres",
+    "description": "Quelques données qui témoignent de notre engagement et de notre expertise",
+    "projects": "Projets réalisés avec succès",
+    "satisfaction": "Taux de satisfaction client",
+    "expertise": "Années d'expertise technique",
+    "support": "Support client disponible"
+  },
+  "founder": {
+    "title": "Rencontrez le Fondateur",
+    "description": "Marwen Helali, fondateur et CEO de VinciCore, est un expert en technologie avec plus de 10 années d'expérience dans le développement de solutions numériques innovantes.",
+    "founderTitle": "Fondateur & CEO"
+  },
+  "vision": {
+    "title": "Notre Vision pour l'Avenir",
+    "description": "Être le partenaire technologique de référence qui accompagne les entreprises dans leur transformation digitale, en créant des solutions qui font la différence et génèrent de la valeur réelle."
+  },
+  "contact": {
+    "heroTitle": "Contactez-Nous",
+    "heroDescription": "Vous avez un projet en tête ? Une question sur nos services ? Notre équipe est là pour vous accompagner et répondre à tous vos besoins.",
+    "formTitle": "Envoyez-nous un message",
+    "formDescription": "Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais.",
+    "nameLabel": "Nom complet",
+    "namePlaceholder": "Votre nom",
+    "emailLabel": "Email",
+    "emailPlaceholder": "votre@email.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Décrivez votre projet ou votre question...",
+    "successMessage": "Message envoyé avec succès ! Nous vous répondrons bientôt.",
+    "formError": "Une erreur est survenue",
+    "unexpectedError": "Une erreur inattendue est survenue",
+    "sendMessage": "Envoyer le message",
+    "contactInfoTitle": "Informations de Contact",
+    "contactInfoDescription": "Nous sommes disponibles pour répondre à toutes vos questions et discuter de vos projets. N'hésitez pas à nous contacter !",
+    "email": "Email",
+    "emailResponse": "Nous répondons sous 24h",
+    "additionalInfoTitle": "Parlons de votre projet",
+    "additionalInfoDescription": "Chaque projet est unique. Contactez-nous pour une consultation personnalisée et découvrons ensemble comment VinciCore peut vous accompagner dans votre réussite.",
+    "consultation": "Consultation gratuite",
+    "personalizedQuote": "Devis personnalisé",
+    "responseWithin24h": "Réponse sous 24h"
+  },
+  "home": {
+    "heroTitlePart1": "Au cœur de vos",
+    "heroTitlePart2": "solutions numériques",
+    "heroDescription": "VinciCore vous accompagne dans votre transformation digitale avec des solutions innovantes et personnalisées pour propulser votre entreprise vers le futur.",
+    "discoverServices": "Découvrez nos services",
+    "contactUs": "Nous contacter",
+    "ourExpertise": "Nos Expertises",
+    "ourExpertiseDescription": "Des solutions complètes pour accompagner votre croissance et votre transformation digitale",
+    "feature1Title": "Développement Sur Mesure",
+    "feature1Description": "Solutions logicielles adaptées à vos besoins spécifiques",
+    "feature2Title": "Cloud & Infrastructure",
+    "feature2Description": "Migration et optimisation de vos infrastructures",
+    "feature3Title": "Cybersécurité",
+    "feature3Description": "Protection complète de vos données et systèmes",
+    "feature4Title": "Conseil Expert",
+    "feature4Description": "Accompagnement dans votre transformation digitale",
+    "whyChooseUsTitle": "Pourquoi choisir VinciCore ?",
+    "whyChooseUsDescription": "Notre approche centrée sur l'innovation et la qualité nous permet de délivrer des solutions qui dépassent vos attentes.",
+    "reason1": "Expertise technique reconnue",
+    "reason2": "Solutions sur mesure et évolutives",
+    "reason3": "Accompagnement personnalisé",
+    "reason4": "Support réactif et disponible",
+    "reason5": "Approche agile et collaborative",
+    "innovationPerformanceTitle": "Innovation & Performance",
+    "innovationPerformanceDescription": "Nous combinons les dernières technologies avec une approche pragmatique pour créer des solutions qui propulsent votre business vers le succès.",
+    "ctaTitle": "Prêt à transformer votre entreprise ?",
+    "ctaDescription": "Discutons de vos projets et découvrons ensemble comment VinciCore peut vous accompagner dans votre réussite.",
+    "ctaButton": "Commencer maintenant"
+  }
+}

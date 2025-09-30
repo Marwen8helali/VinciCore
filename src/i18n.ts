@@ -260,7 +260,7 @@ const resources = {
           subtitle: 'We are available to answer all your questions and discuss your projects. Don\'t hesitate to contact us!',
           email: {
             title: 'Email',
-            content: 'contact@vincicore.com',
+            content: 'vinci.core360@gmail.com',
             description: 'We respond within 24 hours'
           }
         },
@@ -568,7 +568,7 @@ const resources = {
           subtitle: 'Nous sommes disponibles pour répondre à toutes vos questions et discuter de vos projets. N\'hésitez pas à nous contacter !',
           email: {
             title: 'Email',
-            content: 'contact@vincicore.com',
+            content: 'vinci.core360@gmail.com',
             description: 'Nous répondons sous 24h'
           }
         },
@@ -876,7 +876,7 @@ const resources = {
           subtitle: 'نحن متاحون للإجابة على جميع أسئلتكم ومناقشة مشاريعكم. لا تترددوا في الاتصال بنا!',
           email: {
             title: 'البريد الإلكتروني',
-            content: 'contact@vincicore.com',
+            content: 'vinci.core360@gmail.com',
             description: 'نرد خلال 24 ساعة'
           }
         },
