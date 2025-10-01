@@ -194,28 +194,65 @@ const Contact = () => {
             </div>
 
             {/* Contact Info reste identique */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t('contact.info.title')}</h2>
-                <p className="text-gray-600 dark:text-gray-300 text-lg mb-8">{t('contact.info.subtitle')}</p>
-              </div>
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                    <div className="flex items-start space-x-4">
-                      <div className="bg-gradient-to-r from-blue-500 to-cyan-400 p-3 rounded-lg">
-                        <info.icon className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">{info.title}</h3>
-                        <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">{info.content}</p>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm">{info.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            
+<div className="space-y-8">
+  <div>
+    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t('contact.info.title')}</h2>
+    <p className="text-gray-600 dark:text-gray-300 text-lg mb-8">{t('contact.info.subtitle')}</p>
+  </div>
+
+  <div className="space-y-6">
+    {/* Bloc Email */}
+    <a
+      href="mailto:contact@vincicore.com"
+      className="block bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+    >
+      <div className="flex items-start space-x-4">
+        <div className="bg-gradient-to-r from-blue-500 to-cyan-400 p-3 rounded-lg">
+          <Mail className="h-6 w-6 text-white" />
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+            Email
+          </h3>
+          <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
+            contact@vincicore.com
+          </p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
+            {t('contact.info.email.description')}
+          </p>
+        </div>
+      </div>
+    </a>
+
+    {/* Bloc WhatsApp */}
+    <a
+      href="https://wa.me/21622430749?text=Bonjour%20Vincicore%20!"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+    >
+      <div className="flex items-start space-x-4">
+        <div className="bg-green-500 p-3 rounded-lg">
+          <MessageSquare className="h-6 w-6 text-white" />
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+            WhatsApp
+          </h3>
+          <p className="text-green-600 dark:text-green-400 font-medium mb-1">
+            +216 22 430 749
+          </p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
+            {t('contact.info.email.description')}
+          </p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+            
           </div>
         </div>
       </section>
