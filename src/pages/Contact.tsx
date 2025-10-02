@@ -204,7 +204,7 @@ const Contact = () => {
   <div className="space-y-6">
     {/* Bloc Email */}
     <a
-      href="mailto:contact@vincicore.com"
+      href="mailto:vinci.core360@gmail.com"
       className="block bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
     >
       <div className="flex items-start space-x-4">
@@ -216,7 +216,7 @@ const Contact = () => {
             Email
           </h3>
           <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
-            contact@vincicore.com
+            vinci.core360@gmail.com
           </p>
           <p className="text-gray-600 dark:text-gray-300 text-sm">
             {t('contact.info.email.description')}
