@@ -204,7 +204,7 @@ const Contact = () => {
   <div className="space-y-6">
     {/* Bloc Email */}
     <a
-      href="mailto:vinci.core360@gmail.com"
+      href={`mailto:vinci.core360@gmail.com?subject=Contact%20depuis%20le%20site%20Vincicore&body=Bonjour,%0D%0A%0D%0AJe suis ${formData.name} et je souhaite vous contacter.%0D%0A%0D%0AMessage : `}
       className="block bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
     >
       <div className="flex items-start space-x-4">
@@ -227,7 +227,7 @@ const Contact = () => {
 
     {/* Bloc WhatsApp */}
     <a
-      href="https://wa.me/21622430749?text=Bonjour%20Vincicore%20!"
+      href={`https://wa.me/21622430749?text=Bonjour,%20je%20suis%20${encodeURIComponent(formData.name)}.%0A%0A${encodeURIComponent(formData.message)}`}
       target="_blank"
       rel="noopener noreferrer"
       className="block bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
