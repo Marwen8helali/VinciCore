@@ -407,7 +407,19 @@ const Contact = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+        <div>
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+            Email
+          </h3>
+          <p className="text-blue-600 dark:text-blue-400 font-medium mb-1">
+            vinci.core360@gmail.com
+          </p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">
+            {t('contact.info.email.description')}
+          </p>
+        </div>
+      </div>
+    </a>
 
       {/* Section FAQ ou Info supplémentaire */}
       <section className="py-16 bg-white dark:bg-gray-900">
