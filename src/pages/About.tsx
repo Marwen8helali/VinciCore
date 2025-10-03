@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Target, Users, Lightbulb, Award, Heart, Zap } from 'lucide-react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 const About = () => {
   const { t } = useTranslation();
@@ -32,168 +33,278 @@ const About = () => {
 
   return (
     <div className="dark:bg-gray-900 transition-colors duration-300">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 dark:from-gray-950 dark:via-blue-950 dark:to-gray-950 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              {t('about.hero.title')}
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              {t('about.hero.subtitle')}
-            </p>
-          </div>
+      {/* Hero Section avec effet de particules */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 dark:from-gray-950 dark:via-blue-950 dark:to-gray-950 text-white py-20 overflow-hidden">
+        {/* Particules flottantes */}
+        <div className="absolute inset-0">
+          {[...Array(30)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [0, -50, 0],
+                x: [0, Math.random() * 30 - 15, 0],
+                opacity: [0.2, 0.8, 0.2],
+                scale: [1, 1.5, 1],
+              }}
+              transition={{
+                duration: 4 + Math.random() * 3,
+                repeat: Infinity,
+                delay: Math.random() * 3,
+              }}
+            />
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        >
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
+            {t('about.hero.title')}
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-xl text-gray-300 max-w-3xl mx-auto"
+          >
+            {t('about.hero.subtitle')}
+          </motion.p>
+        </motion.div>
       </section>
 
-      {/* Company Story */}
-      <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* Values Section avec animations 3D */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                {t('about.story.title')}
-              </h2>
-              <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg">
-                {(t('about.story.paragraphs', { returnObjects: true }) as string[]).map((paragraph: string, index: number) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
-            </div>
-            
-            <div className="relative">
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-400 p-8 rounded-2xl text-white">
-                <Target className="h-12 w-12 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">{t('about.mission.title')}</h3>
-                <p className="text-blue-100 text-lg">
-                  {t('about.mission.description')}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            >
               {t('about.values.title')}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+            >
               {t('about.values.subtitle')}
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
             {values.map((value, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 text-center group"
+                variants={{
+                  hidden: { opacity: 0, y: 50, rotateY: -30 },
+                  visible: { opacity: 1, y: 0, rotateY: 0 }
+                }}
+                whileHover={{ 
+                  scale: 1.08, 
+                  rotateY: 5,
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                  transition: { duration: 0.3 }
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 text-center group cursor-pointer transform-gpu backdrop-blur-lg bg-white/90 dark:bg-gray-700/90"
+                style={{ perspective: "1000px" }}
               >
-                <div className="bg-gradient-to-r from-blue-500 to-cyan-400 p-4 rounded-full w-fit mx-auto mb-6 group-hover:shadow-lg transition-shadow">
+                <motion.div
+                  whileHover={{ 
+                    rotate: 360, 
+                    scale: 1.2,
+                    transition: { duration: 0.6 }
+                  }}
+                  className="bg-gradient-to-r from-blue-500 to-cyan-400 p-4 rounded-full w-fit mx-auto mb-6"
+                >
                   <value.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                </motion.div>
+                
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-2xl font-bold text-gray-900 dark:text-white mb-4"
+                >
                   {value.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-lg">
+                </motion.h3>
+                
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-gray-600 dark:text-gray-300 text-lg"
+                >
                   {value.description}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Stats Section avec counter animation et effet glassmorphism */}
+      <section className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden">
+        {/* Effet de fond animé */}
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'radial-gradient(circle, #3B82F6 1px, transparent 1px)',
+            backgroundSize: '50px 50px',
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <motion.h2
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            >
               {t('about.stats.title')}
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-xl text-gray-600 dark:text-gray-300"
+            >
               {t('about.stats.subtitle')}
-            </p>
+            </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.15 }
+              }
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl">
-                <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+              <motion.div
+                key={index}
+                variants={{
+                  hidden: { scale: 0.5, opacity: 0, rotateX: -90 },
+                  visible: { scale: 1, opacity: 1, rotateX: 0 }
+                }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  rotate: 3,
+                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)",
+                  transition: { duration: 0.3 }
+                }}
+                className="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform-gpu backdrop-blur-sm"
+                style={{ perspective: "1000px" }}
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    delay: index * 0.1 + 0.3, 
+                    type: "spring", 
+                    stiffness: 200,
+                    damping: 10
+                  }}
+                  className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2"
+                >
                   {stat.number}
-                </div>
-                <div className="text-gray-700 dark:text-gray-300 font-medium">{stat.label}</div>
-              </div>
+                </motion.div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.5 }}
+                  className="text-gray-700 dark:text-gray-300 font-medium"
+                >
+                  {stat.label}
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Founder Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+      {/* Section supplémentaire avec effet de révélation */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                {t('about.founder.title')}
-              </h2>
-              <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg">
-                <p>
-                  <strong className="text-gray-900 dark:text-white">Marwen Helali</strong>, {t('about.founder.description')}
-                </p>
-                {(t('about.founder.bio', { returnObjects: true }) as string[]).map((paragraph: string, index: number) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
-              </div>
-            </div>
-            
-            <div className="order-1 lg:order-2">
-              <div className="bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/20 dark:to-cyan-900/20 p-8 rounded-2xl">
-                <div className="bg-gradient-to-br from-blue-500 to-cyan-400 rounded-full w-32 h-32 mx-auto mb-6 flex items-center justify-center">
-                  <Users className="h-16 w-16 text-white" />
-                </div>
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Marwen Helali</h3>
-                  <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">{t('about.founder.position')}</p>
-                  <div className="flex justify-center space-x-4">
-                    <Award className="h-6 w-6 text-yellow-500" />
-                    <Zap className="h-6 w-6 text-blue-500" />
-                    <Target className="h-6 w-6 text-green-500" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {t('about.vision.title')}
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            {t('about.vision.subtitle')}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {(t('about.vision.pillars', { returnObjects: true }) as { title: string; description: string }[]).map((pillar, index) => {
-              const icons = [Lightbulb, Users, Target];
-              const Icon = icons[index];
-              return (
-                <div key={index} className="text-center">
-                  <div className="bg-white bg-opacity-20 rounded-full p-4 w-fit mx-auto mb-4">
-                    <Icon className="h-8 w-8" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">{pillar.title}</h3>
-                  <p className="text-blue-100">{pillar.description}</p>
-                </div>
-              );
-            })}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl p-12 text-white text-center shadow-2xl"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <Target className="h-16 w-16 mx-auto mb-6" />
+              <h3 className="text-3xl font-bold mb-4">Notre Mission</h3>
+              <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                Transformer vos idées en solutions digitales innovantes et performantes, 
+                en mettant l'accent sur la qualité, la sécurité et l'expérience utilisateur.
+              </p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>

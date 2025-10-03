@@ -1,27 +1,32 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Services from './pages/Services';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
+import AnimatedRoutes from './AnimatedRoutes';
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-white">
+      <ScrollToTop />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300"
+      >
         <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          style={{ marginTop: '80px' }}
+        >
+          <AnimatedRoutes />
+        </motion.main>
         <Footer />
-      </div>
+      </motion.div>
     </Router>
   );
 }
