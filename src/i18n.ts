@@ -262,6 +262,10 @@ const resources = {
             title: 'Email',
             content: 'vinci.core360@gmail.com',
             description: 'We respond within 24 hours'
+          },
+          whatsApp: {
+            title: 'WhatsApp',
+            description: 'Click to chat on WhatsApp'
           }
         },
         project: {
@@ -570,6 +574,10 @@ const resources = {
             title: 'Email',
             content: 'vinci.core360@gmail.com',
             description: 'Nous répondons sous 24h'
+          },
+        whatsApp: {
+            title: 'WhatsApp',
+            description: 'Cliquez pour discuter sur WhatsApp'
           }
         },
         project: {
@@ -878,7 +886,11 @@ const resources = {
             title: 'البريد الإلكتروني',
             content: 'vinci.core360@gmail.com',
             description: 'نرد خلال 24 ساعة'
-          }
+          },
+        whatsApp: {
+            title: 'واتساب',
+            description: 'انقر للدردشة عبر الواتساب'
+          }          
         },
         project: {
           title: 'لنتحدث عن مشروعكم',
